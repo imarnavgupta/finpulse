@@ -3,6 +3,13 @@ import sqlite3
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
+import os
+from fetch_data import create_database, fetch_and_store
+
+# Auto-fetch data if database is empty or doesn't exist
+if not os.path.exists("finpulse.db"):
+    create_database()
+    fetch_and_store()
 
 st.set_page_config(page_title="FinPulse", page_icon="📈", layout="wide")
 
